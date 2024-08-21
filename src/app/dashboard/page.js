@@ -4,6 +4,7 @@ import axios from 'axios'
 import Link from 'next/navigation'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
+import Navbar from '../components/Navbar'
 
 export default function Dashboard() {
   const router = useRouter()
@@ -28,10 +29,13 @@ export default function Dashboard() {
     }
   }
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <button onClick={getUserDetails}>verificar info</button>
-      <button onClick={logout}>Cerrar Sesion</button>
+    <div className='flex flex-col'>
+      <Navbar />
+      <div>
+        <h1>Dashboard</h1>
+        <button onClick={getUserDetails}>verificar info</button>
+        <button onClick={logout}>Cerrar Sesion</button>
+      </div>
     </div>
   )
 }

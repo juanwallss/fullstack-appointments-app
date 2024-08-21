@@ -25,7 +25,7 @@ export async function POST(request) {
     }
 
     // Genera un token JWT (opcional)
-    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, email: user.email, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
     const response = NextResponse.json({ message: 'Inicio de sesión exitoso', success: true}, { status: 200 }) 
     response.cookies.set("token", token, {
       httpOnly: true,

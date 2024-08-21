@@ -8,11 +8,13 @@ export async function POST (request) {
     // console.log("req nom", request.json())
     const reqBody = await request.json()
 
-    const { name, username, email, password } = reqBody
+    const { name, email, password } = reqBody
 
     // check if user already exists
-    const existingUser = await User.findOne({ email: reqBody.email })
+    const existingUser = await User.findOne({where: { email: email }})
     if (existingUser) {
+      console.log(existingUser);
+      console.log(email);
       return NextResponse.json('Usuario existente', { status: 400 })
     }
 
@@ -20,7 +22,6 @@ export async function POST (request) {
     const hashedPassword = bcryptjs.hashSync(password, 10)
     const user = new User({
       name,
-      username,
       email,
       password: hashedPassword
     })

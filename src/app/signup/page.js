@@ -7,7 +7,7 @@ import Link from 'next/link'
 export default function SignupPage() {
   const router = useRouter()
   const [user, setUser] = useState({
-    username: '',
+    name: '',
     email: '',
     password: ''
   })
@@ -41,12 +41,12 @@ export default function SignupPage() {
         <h1 className="text-2xl font-bold mb-6 text-center">Crea una cuenta</h1>
         <form onSubmit={onSignup} className="space-y-4">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">Nombre de usuario</label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nombre de usuario</label>
             <input
-              id="username"
-              name="username"
+              id="name"
+              name="name"
               type="text"
-              value={user.username}
+              value={user.name} 
               onChange={handleChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
               required

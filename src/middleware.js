@@ -7,7 +7,7 @@ export function middleware(request) {
   if (isPublicPath && token) {
     return NextResponse.redirect(new URL('/dashboard', request.nextUrl))
   }
-  if (!isPublicPath && !token) {
+  if ((!isPublicPath && !token)|| path === '/') {
     return NextResponse.redirect(new URL('/login', request.nextUrl))
   }
 }
