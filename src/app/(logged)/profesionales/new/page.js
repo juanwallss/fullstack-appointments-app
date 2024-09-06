@@ -2,8 +2,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import Navbar from '@/app/components/Navbar'
-
+import { Button } from '@mui/material'
 export default function NewProfesional() {
   const [name, setName] = useState('')
   const [specialty, setSpecialty] = useState('')
@@ -38,7 +37,6 @@ export default function NewProfesional() {
 
   return (
     <div className='flex flex-col'>
-      <Navbar />
       <div className='max-w-md mx-auto mt-10'>
         <h1 className='text-2xl font-bold mb-4'>Nuevo Profesional</h1>
         <form onSubmit={handleSubmit}>
@@ -92,12 +90,20 @@ export default function NewProfesional() {
           </div>
           {error && <p className='text-red-500 mb-4'>{error}</p>}
           {success && <p className='text-green-500 mb-4'>{success}</p>}
-          <button
+          <Button
             type='submit'
-            className='w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600'
+            variant='contained'
           >
             Guardar
-          </button>
+          </Button>
+          <Button
+            onClick={() => {
+              router.back()
+            }}
+            variant='contained'
+          >
+            Regresar
+          </Button>
         </form>
       </div>
     </div>

@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import Navbar from '../components/Navbar'
-import EnhancedTable from '../components/Table'
+import EnhancedTable from '../../../components/Table'
 export default function Profesionales() {
   const [professionals, setProfessionals] = useState([])
   useEffect(() => {
@@ -22,7 +21,6 @@ export default function Profesionales() {
   }
   return (
     <div className='flex flex-col'>
-      <Navbar />
       <div className='p-3 shadow rounded'>
         <EnhancedTable
 					title={{
