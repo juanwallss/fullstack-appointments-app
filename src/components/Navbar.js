@@ -5,6 +5,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import { useState } from 'react'
+import { AccountCircleSharp } from '@mui/icons-material'
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false)
@@ -13,6 +14,7 @@ export default function Navbar() {
   const logout = async () => {
     try {
       await axios.get('/api/users/logout').then(() => {
+        toggleMenu()
         toast.success('Logout Successful')
         router.push('/login')
       })
@@ -23,7 +25,6 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu)
-    logout()
   }
 
   return (
@@ -34,19 +35,20 @@ export default function Navbar() {
           <span className='text-gray-500 text-sm'>Admin</span>
         </div>
         <div className='flex flex-col'>
-        <Image
-            src={'/profile-user.png'}
-            alt='user-photo'
-            height={40}
-            width={40}
-            onClick={toggleMenu}
-            className='cursor-pointer'
-          />
+          <AccountCircleSharp className='w-[40px] h-[40px] hover:text-mainCyan cursor-pointer' onClick={toggleMenu} />
           {openMenu && (
-            <div className='absolute mt-2 ml-3 bg-white border border-gray-200 shadow-lg rounded-lg py-2'>
-              <Link href="/profile" className='block px-4 py-2 text-gray-700 hover:bg-gray-100'>
-                Perfil
-              </Link>
+            // <div className='hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600'>
+            //   <Link href="/profile" className='block px-4 py-2 text-gray-700 hover:bg-gray-100'>
+            //     Perfil
+            //   </Link>
+            //   <button
+            //     onClick={logout}
+            //     className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'
+            //   >
+            //     Logout
+            //   </button>
+            // </div>
+            <div className='origin-top-right absolute right-3 mt-10 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
               <button
                 onClick={logout}
                 className='block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left'

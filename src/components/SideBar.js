@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import { People, HandshakeTwoTone, EngineeringTwoTone } from "@mui/icons-material";
 const routes = [
   {
     title: 'MENU',
@@ -8,32 +9,22 @@ const routes = [
       {
         path: '/dashboard',
         label: 'Dashboard',
-        icon: '/dashboard.png'
+        icon: DashboardIcon
       },
       {
         path: '/citas',
         label: 'Citas',
-        icon: '/handshake.png'
+        icon: HandshakeTwoTone
       },
       {
         path: '/clientes',
         label: 'Clientes',
-        icon: '/people.png'
+        icon: People
       },
       {
         path: '/profesionales',
         label: 'Profesionales',
-        icon: '/businessman.png'
-      }
-    ]
-  },
-  {
-    title: '',
-    items: [
-      {
-        path: '/logout',
-        label: 'Cerrar Sesion',
-        icon: '/logout.png'
+        icon: EngineeringTwoTone
       }
     ]
   }
@@ -46,8 +37,8 @@ export default function SideBar() {
         <span className="hidden lg:block text-gray-500 font-light my-4">{r.title}</span>
         {
           r.items.map(i => (
-            <Link href={i.path} key={i.label} className="flex items-center justify-center lg:justify-start gap-3 text-gray-500 hover:text-cyan-500">
-              <Image src={i.icon} alt={i.label} width={22} height={22} />
+            <Link href={i.path} key={i.label} className="flex items-center justify-center lg:justify-start gap-3 text-gray-500 hover:text-mainCyan">
+              <i.icon />
               <span className="hidden lg:block">{i.label}</span>
             </Link>
           ))
